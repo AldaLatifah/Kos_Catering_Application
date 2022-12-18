@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sewa_kost_application/models/kost.dart';
 
@@ -16,7 +17,16 @@ class _DetailKostPageState extends State<DetailKostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.kost.name),
+        backgroundColor: const Color(0xffF0E9A4),
+        title: Text(
+          widget.kost.name,
+          style: GoogleFonts.poppins(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
       ),
       body: ListView(children: [
         Column(

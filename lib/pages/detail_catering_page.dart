@@ -55,7 +55,6 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
               Padding(
                 padding: const EdgeInsets.only(
                   left: 8.0,
-                  top: 12.0,
                 ),
                 child: Text(
                   "Alamat ${widget.catering.alamat}",
@@ -65,12 +64,16 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, top: 8.0, right: 8.0),
+                padding:
+                    const EdgeInsets.only(left: 8.0, top: 12.0, right: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Pemilik : ${widget.catering.pemilik}"),
-                    Text(widget.catering.harga),
+                    Text(
+                      widget.catering.harga,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
@@ -79,15 +82,56 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
                   left: 8.0,
                   top: 8.0,
                 ),
-                child: Row(
-                  children: [
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                    Icon(Icons.star),
-                    Icon(Icons.star_border)
-                  ],
-                ),
+                child: widget.catering.rate == "5"
+                    ? Row(
+                        children: [
+                          Icon(Icons.star),
+                          Icon(Icons.star),
+                          Icon(Icons.star),
+                          Icon(Icons.star),
+                          Icon(Icons.star),
+                          // Icon(Icons.star_border)
+                        ],
+                      )
+                    : widget.catering.rate == "4"
+                        ? Row(
+                            children: [
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star_border)
+                            ],
+                          )
+                        : widget.catering.rate == "3"
+                            ? Row(
+                                children: [
+                                  Icon(Icons.star),
+                                  Icon(Icons.star),
+                                  Icon(Icons.star),
+                                  Icon(Icons.star_border),
+                                  Icon(Icons.star_border)
+                                ],
+                              )
+                            : widget.catering.rate == "2"
+                                ? Row(
+                                    children: [
+                                      Icon(Icons.star),
+                                      Icon(Icons.star),
+                                      Icon(Icons.star_border),
+                                      Icon(Icons.star_border),
+                                      Icon(Icons.star_border)
+                                    ],
+                                  )
+                                : Row(
+                                    children: [
+                                      Icon(Icons.star),
+                                      Icon(Icons.star_border),
+                                      Icon(Icons.star_border),
+                                      Icon(Icons.star_border),
+                                      Icon(Icons.star_border)
+                                    ],
+                                  ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 12),
@@ -106,7 +150,7 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
                     MenuCard(
                       Menu(
                         "Nasi Goreng",
-                        "assets/JK KOST.jpg",
+                        "assets/nasi_goreng.png",
                         "4",
                         "20.000",
                       ),
@@ -120,7 +164,11 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Text("Pesan"),
+        backgroundColor: Colors.yellow.shade200,
+        child: Text(
+          "Pesan",
+          style: TextStyle(color: Colors.black),
+        ),
       ),
     );
   }

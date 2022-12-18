@@ -88,11 +88,11 @@ class _CateringPageState extends State<CateringPage> {
                 ),
                 CateringCard(
                   Catering(
-                    "a",
-                    "a",
-                    "a",
-                    "a",
-                    "assets/JK KOST.jpg",
+                    "Catering Dapur Neng Sri ",
+                    "JL. TEPO KM 10, PERUM GRIYA, Blk. M No.4",
+                    "Ibu Sri",
+                    "4",
+                    "assets/catering1.png",
                     "Rp. 500,000 per kotak",
                   ),
                 ),

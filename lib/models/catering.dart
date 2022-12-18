@@ -1,5 +1,3 @@
-import 'package:sewa_kost_application/models/menu.dart';
-
 class Catering {
   late String name;
   late String alamat;

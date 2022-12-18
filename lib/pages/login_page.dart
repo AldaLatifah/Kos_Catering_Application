@@ -18,6 +18,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
+  bool _obscureText = true;
   UserService userService = UserService();
   @override
   Widget build(BuildContext context) {
@@ -88,9 +89,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: TextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
+                  obscureText: _obscureText,
+                  decoration: InputDecoration(
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                        icon: Icon(Icons.remove_red_eye),
                       ),
                       hintText: "Password",
                       prefixIcon: Icon(Icons.lock)),
@@ -101,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 1.2,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () async {
                     var checkLogin = await userService.getLogin(
                       usernameController.text,
@@ -122,9 +132,11 @@ class _LoginPageState extends State<LoginPage> {
                       Get.snackbar("Gagal", "Cek Email dan Password");
                     }
                   },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  color: Colors.red,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    primary: Colors.red,
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,
@@ -173,13 +185,15 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 1.2,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {
                     Get.to(RegisterPage());
                   },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  color: Colors.grey,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    primary: Colors.grey,
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,

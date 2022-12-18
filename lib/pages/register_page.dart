@@ -22,6 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordController = new TextEditingController();
   TextEditingController rePasswordController = new TextEditingController();
 
+  bool _obscureText = true;
+
   UserService userService = UserService();
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,6 @@ class _RegisterPageState extends State<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/logo.png",
-                width: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.height / 3,
-              ),
               Text(
                 "Register",
                 textAlign: TextAlign.center,
@@ -81,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderSide: BorderSide(color: Color(0xff969697)),
                       ),
                       hintText: "NIK",
-                      prefixIcon: Icon(Icons.person)),
+                      prefixIcon: Icon(Icons.numbers)),
                 ),
               ),
               Container(
@@ -135,7 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderSide: BorderSide(color: Color(0xff969697)),
                       ),
                       hintText: "Username",
-                      prefixIcon: Icon(Icons.person)),
+                      prefixIcon: Icon(Icons.abc)),
                 ),
               ),
               Container(
@@ -162,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderSide: BorderSide(color: Color(0xff969697)),
                       ),
                       hintText: "email",
-                      prefixIcon: Icon(Icons.person)),
+                      prefixIcon: Icon(Icons.alternate_email)),
                 ),
               ),
               Container(
@@ -173,11 +170,20 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 child: TextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
+                  obscureText: _obscureText,
+                  decoration: InputDecoration(
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(color: Color(0xff969697)),
                       ),
                       hintText: "Password",
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                        icon: Icon(Icons.remove_red_eye),
+                      ),
                       prefixIcon: Icon(Icons.lock)),
                 ),
               ),
@@ -188,13 +194,22 @@ class _RegisterPageState extends State<RegisterPage> {
                   top: 30,
                 ),
                 child: TextField(
+                  obscureText: _obscureText,
                   controller: rePasswordController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(color: Color(0xff969697)),
                       ),
                       hintText: "Konfirmasi Password",
-                      prefixIcon: Icon(Icons.lock)),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                        icon: Icon(Icons.remove_red_eye),
+                      ),
+                      prefixIcon: Icon(Icons.lock_person)),
                 ),
               ),
               SizedBox(
@@ -202,7 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 1.2,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () async {
                     if (rePasswordController.text != passwordController.text) {
                       Get.snackbar("Gagal", "Konfirmasi Password Salah");
@@ -221,9 +236,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       Get.to(LoginPage());
                     }
                   },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  color: Colors.red,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    primary: Colors.red,
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,
@@ -276,6 +293,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   onPressed: () {
                     Get.to(LoginPage());
                   },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    primary: Colors.grey,
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,

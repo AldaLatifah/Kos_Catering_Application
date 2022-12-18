@@ -14,6 +14,7 @@ class CateringPage extends StatefulWidget {
 }
 
 class _CateringPageState extends State<CateringPage> {
+  TextEditingController searchController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class _CateringPageState extends State<CateringPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Catering",
+                  "Catering Area",
                   style: GoogleFonts.poppins(color: Colors.black),
                 ),
                 SizedBox(
@@ -51,6 +52,40 @@ class _CateringPageState extends State<CateringPage> {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  margin: const EdgeInsets.only(
+                    top: 5,
+                  ),
+                  child: TextField(
+                    controller: searchController,
+                    decoration: const InputDecoration(
+                      labelStyle: TextStyle(
+                        color: Color(0xffAE7E73),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffAE7E73)),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      hintText: "Cari Catering",
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 CateringCard(
                   Catering(
                     "a",

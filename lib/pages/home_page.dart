@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,37 +118,40 @@ class _HomePageState extends State<HomePage> {
                             -1.1436951,
                             116.870669,
                             "2",
-                            "ini deskripsi"),
+                            "ini deskripsi",
+                            "+6281521886490"),
                       ),
                       SizedBox(
                         width: 20,
                       ),
                       KostCard(
                         Kost(
-                            "KOST KARTIKA ITK",
-                            "Balikpapan",
-                            "assets/KOST KARTIKA ITK.jpg",
+                            "Kost Putra Al Ikhwan ITK ",
+                            "Balikpapan Utara",
+                            "assets/kost2.png",
                             "4.5",
-                            "Rp. 500.000/org",
-                            -1.1436951,
-                            116.870669,
+                            "Rp. 550.000/org",
+                            -1.1481127,
+                            116.8757036,
                             "2",
-                            "ini deskripsi"),
+                            "Kost Putra Al Ikhwan ITK  merupakan kost putra, yang berada sangat dekat dengan Institut Teknologi Kalimantan, yang dapat diakses langsung menggunakan kendaraan umum apa saja, fasilitas yang ada pada JK kost ini, yaitu lemari, meja belajar, kasur, kamar mandi dalam, parkiran kost, CCTV",
+                            "+6287812193116"),
                       ),
                       SizedBox(
                         width: 20,
                       ),
                       KostCard(
                         Kost(
-                            "KOST KARTIKA ITK",
+                            "SINAR KOST PUTRA ITK",
                             "Balikpapan",
                             "assets/KOST KARTIKA ITK.jpg",
                             "4.5",
-                            "Rp. 500.000/org",
-                            -1.1436951,
-                            116.870669,
-                            "2",
-                            "ini deskripsi"),
+                            "Rp. 800.000/org",
+                            -1.1432033,
+                            116.8694164,
+                            "1",
+                            "Sinar kost putra ITK Balikapapan  merupakan kost putra, yang berada sangat dekat dengan Institut Teknologi Kalimantan, yang dapat diakses langsung menggunakan kendaraan umum apa saja, fasilitas yang ada pada JK kost ini yaitu, lemari, meja belajar, kasur, kamar mandi dalam, WIFI, parkiran kost, CCTV",
+                            "+6281282661400"),
                       ),
                       SizedBox(
                         width: 20,
@@ -161,7 +165,13 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("Cari Wilayah"),
+                    child: Text(
+                      "Cari Wilayah",
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   Row(
                     children: [
@@ -189,6 +199,20 @@ class _HomePageState extends State<HomePage> {
                       LokasiCard(
                         gambar: "assets/KOST KARTIKA ITK.jpg",
                         nama_lokasi: "Balikpapan",
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      LokasiCard(
+                        gambar: "assets/KOST KARTIKA ITK.jpg",
+                        nama_lokasi: "Balikpapan Utara",
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      LokasiCard(
+                        gambar: "assets/KOST KARTIKA ITK.jpg",
+                        nama_lokasi: "Samarinda",
                       )
                     ],
                   ),

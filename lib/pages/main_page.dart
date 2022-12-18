@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sewa_kost_application/pages/catering_page.dart';
 import 'package:sewa_kost_application/pages/home_page.dart';
+import 'package:sewa_kost_application/pages/login_page.dart';
 import 'package:sewa_kost_application/pages/profile_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -33,6 +36,24 @@ class _MainPageState extends State<MainPage> {
   ];
 
   int _pageIndex = 0;
+
+  @override
+  void initState() {
+    getPrefs();
+    super.initState();
+  }
+
+  getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    bool? boolValue = prefs.getBool('isLogin');
+
+    if (boolValue != true) {
+      MainPage();
+    } else {
+      LoginPage();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

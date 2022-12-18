@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -11,8 +12,19 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  String? name;
+
+  getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      name = prefs.getString('name');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    getPrefs();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffF0E9A4),
@@ -33,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: 10,
           ),
-          Center(child: Text("Danu"))
+          Center(child: Text(name ?? ""))
         ],
       ),
     );

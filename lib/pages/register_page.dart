@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sewa_kost_application/models/user.dart';
 import 'package:sewa_kost_application/pages/login_page.dart';
+import 'package:sewa_kost_application/services/user_services.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -14,8 +16,13 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   TextEditingController nameController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController nikController = new TextEditingController();
   TextEditingController usernameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
+  TextEditingController rePasswordController = new TextEditingController();
+
+  UserService userService = UserService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +55,33 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: GoogleFonts.poppins(
                   fontSize: 13,
                   fontWeight: FontWeight.w300,
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                height: 50,
+                margin: const EdgeInsets.only(
+                  top: 30,
+                ),
+                child: TextField(
+                  controller: nikController,
+                  decoration: const InputDecoration(
+                      labelStyle: TextStyle(
+                        color: Color(0xffAE7E73),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffAE7E73)),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      hintText: "NIK",
+                      prefixIcon: Icon(Icons.person)),
                 ),
               ),
               Container(
@@ -111,6 +145,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   top: 30,
                 ),
                 child: TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                      labelStyle: TextStyle(
+                        color: Color(0xffAE7E73),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffAE7E73)),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      hintText: "email",
+                      prefixIcon: Icon(Icons.person)),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                height: 50,
+                margin: const EdgeInsets.only(
+                  top: 30,
+                ),
+                child: TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(
                       border: UnderlineInputBorder(
@@ -120,13 +181,46 @@ class _RegisterPageState extends State<RegisterPage> {
                       prefixIcon: Icon(Icons.lock)),
                 ),
               ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                height: 50,
+                margin: const EdgeInsets.only(
+                  top: 30,
+                ),
+                child: TextField(
+                  controller: rePasswordController,
+                  decoration: const InputDecoration(
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff969697)),
+                      ),
+                      hintText: "Konfirmasi Password",
+                      prefixIcon: Icon(Icons.lock)),
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 1.2,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (rePasswordController.text != passwordController.text) {
+                      Get.snackbar("Gagal", "Konfirmasi Password Salah");
+                    } else {
+                      await userService.addItem(
+                        User(
+                          nameController.text,
+                          usernameController.text,
+                          emailController.text,
+                          passwordController.text,
+                          nikController.text,
+                        ),
+                      );
+
+                      Get.snackbar("Berhasil", "Silahkan Login");
+                      Get.to(LoginPage());
+                    }
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),
                   color: Colors.red,
@@ -178,13 +272,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 1.2,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {
                     Get.to(LoginPage());
                   },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  color: Colors.grey,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,

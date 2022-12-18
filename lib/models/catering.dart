@@ -7,7 +7,6 @@ class Catering {
   late String rate;
   late String gambar;
   late String harga;
-  late Menu menu;
 
   Catering(
     this.name,
@@ -16,6 +15,5 @@ class Catering {
     this.rate,
     this.gambar,
     this.harga,
-    this.menu,
   );
 }

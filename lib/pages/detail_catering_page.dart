@@ -105,34 +105,10 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
                   children: [
                     MenuCard(
                       Menu(
-                        widget.catering.menu.name,
-                        widget.catering.menu.gambar,
-                        widget.catering.menu.rate,
-                        widget.catering.menu.harga,
-                      ),
-                    ),
-                    MenuCard(
-                      Menu(
-                        widget.catering.menu.name,
-                        widget.catering.menu.gambar,
-                        widget.catering.menu.rate,
-                        widget.catering.menu.harga,
-                      ),
-                    ),
-                    MenuCard(
-                      Menu(
-                        widget.catering.menu.name,
-                        widget.catering.menu.gambar,
-                        widget.catering.menu.rate,
-                        widget.catering.menu.harga,
-                      ),
-                    ),
-                    MenuCard(
-                      Menu(
-                        widget.catering.menu.name,
-                        widget.catering.menu.gambar,
-                        widget.catering.menu.rate,
-                        widget.catering.menu.harga,
+                        "Nasi Goreng",
+                        "assets/JK KOST.jpg",
+                        "4",
+                        "20.000",
                       ),
                     ),
                   ],
@@ -141,6 +117,10 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
             ],
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text("Pesan"),
       ),
     );
   }

@@ -8,6 +8,7 @@ class Kost {
   late double long;
   late String sisa;
   late String deskripsi;
+  late String no_telp;
 
   Kost(
     this.name,
@@ -19,5 +20,6 @@ class Kost {
     this.long,
     this.sisa,
     this.deskripsi,
+    this.no_telp,
   );
 }

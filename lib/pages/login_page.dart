@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sewa_kost_application/pages/main_page.dart';
 import 'package:sewa_kost_application/pages/register_page.dart';
+import 'package:sewa_kost_application/services/user_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,9 +17,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = new TextEditingController();
-
   TextEditingController passwordController = new TextEditingController();
-
+  UserService userService = UserService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,8 +102,25 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 width: MediaQuery.of(context).size.width / 1.2,
                 child: RaisedButton(
-                  onPressed: () {
-                    Get.offAll(MainPage());
+                  onPressed: () async {
+                    var checkLogin = await userService.getLogin(
+                      usernameController.text,
+                      passwordController.text,
+                    );
+
+                    if (checkLogin != null) {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setBool('isLogin', true);
+                      prefs.setString('username', checkLogin.username);
+                      prefs.setString('email', checkLogin.email);
+                      prefs.setString('nik', checkLogin.nik);
+                      prefs.setString('name', checkLogin.name);
+
+                      Get.offAll(MainPage());
+                    } else {
+                      Get.snackbar("Gagal", "Cek Email dan Password");
+                    }
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),

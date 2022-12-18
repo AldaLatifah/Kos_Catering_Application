@@ -94,12 +94,6 @@ class _CateringPageState extends State<CateringPage> {
                     "a",
                     "assets/JK KOST.jpg",
                     "Rp. 500,000 per kotak",
-                    Menu(
-                      "nasi_goreng",
-                      "assets/JK KOST.jpg",
-                      "a",
-                      "a",
-                    ),
                   ),
                 ),
               ],

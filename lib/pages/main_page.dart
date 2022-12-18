@@ -11,12 +11,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final List<BottomNavigationBarItem> _myItem = const [
     BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: "Home",
-    ),
-    BottomNavigationBarItem(
       icon: Icon(Icons.holiday_village),
-      label: "Kost",
+      label: "Cari Kost",
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.food_bank),
@@ -43,8 +39,8 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Colors.transparent,
       body: _myPages.elementAt(_pageIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xffB9DFBA),
-        selectedItemColor: Color(0xff386829),
+        backgroundColor: const Color(0xffF0E9A4),
+        selectedItemColor: Colors.red,
         unselectedItemColor: Colors.black,
         currentIndex: _pageIndex,
         items: _myItem,

@@ -4,6 +4,8 @@
         android:label="sewa_kost_application"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyB7rPmr9UY4Qg4SzQwkwCqwjkld82gjZQg"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

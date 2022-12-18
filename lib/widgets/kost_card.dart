@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sewa_kost_application/models/kost.dart';
+import 'package:get/get.dart';
+import 'package:sewa_kost_application/pages/detail_kost_page.dart';
+import 'package:sewa_kost_application/pages/maps.dart';
 
 class KostCard extends StatelessWidget {
   const KostCard(this.kost);
@@ -11,6 +14,9 @@ class KostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Get.to(DetailKostPage(kost: kost));
+      },
       child: Container(
         height: 230,
         width: 120,

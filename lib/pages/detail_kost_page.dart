@@ -38,8 +38,14 @@ class _DetailKostPageState extends State<DetailKostPage> {
               width: MediaQuery.of(context).size.width,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(widget.kost.name),
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+              child: Text(
+                widget.kost.name,
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -55,8 +61,14 @@ class _DetailKostPageState extends State<DetailKostPage> {
               child: Text("Tersisa 2 kamar"),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Fasilitas"),
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+              child: Text(
+                "Fasilitas",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -102,16 +114,28 @@ class _DetailKostPageState extends State<DetailKostPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Deskripsi"),
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+              child: Text(
+                "Deskripsi",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("loremajjhajbajs anjjbd abhje"),
+              child: Text(widget.kost.deskripsi),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Lokasi"),
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+              child: Text(
+                "Lokasi",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
@@ -119,7 +143,7 @@ class _DetailKostPageState extends State<DetailKostPage> {
               child: GoogleMap(
                 mapType: MapType.normal,
                 initialCameraPosition: CameraPosition(
-                  target: LatLng(-1.1436951, 116.870669),
+                  target: LatLng(widget.kost.lat, widget.kost.long),
                   zoom: 14.0,
                 ),
               ),

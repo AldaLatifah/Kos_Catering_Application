@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sewa_kost_application/pages/catering_page.dart';
 import 'package:sewa_kost_application/pages/home_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _myPages = [
     HomePage(),
-    HomePage(),
+    CateringPage(),
     HomePage(),
     HomePage(),
   ];

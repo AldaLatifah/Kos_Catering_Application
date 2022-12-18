@@ -1,24 +1,16 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sewa_kost_application/models/catering.dart';
-import 'package:sewa_kost_application/pages/catering_page.dart';
-import 'package:sewa_kost_application/pages/detail_catering_page.dart';
+import 'package:sewa_kost_application/models/menu.dart';
 
-class CateringCard extends StatelessWidget {
-  CateringCard(this.catering);
+class MenuCard extends StatelessWidget {
+  MenuCard(this.menu);
 
-  final Catering catering;
+  final Menu menu;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.to(DetailCateringPage(
-          catering: catering,
-        ));
-      },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
@@ -37,7 +29,7 @@ class CateringCard extends StatelessWidget {
             //   height: 60,
             //   child: Image.asset(catering.gambar),
             // ),
-            Image.asset(catering.gambar),
+            Image.asset(menu.gambar),
             SizedBox(width: 29),
             Expanded(
               child: Column(
@@ -46,7 +38,7 @@ class CateringCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    catering.name,
+                    menu.name,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Color(0xff020202),
@@ -54,7 +46,7 @@ class CateringCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    catering.harga,
+                    menu.harga,
                     style: TextStyle(
                       color: Color(0xff8d92a3),
                       fontSize: 13,

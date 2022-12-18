@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sewa_kost_application/models/catering.dart';
 import 'package:sewa_kost_application/models/kost.dart';
+import 'package:sewa_kost_application/models/menu.dart';
+import 'package:sewa_kost_application/widgets/menu_card.dart';
 
 class DetailCateringPage extends StatefulWidget {
   const DetailCateringPage({Key? key, required this.catering})
@@ -30,105 +32,116 @@ class _DetailCateringPageState extends State<DetailCateringPage> {
           color: Colors.black, //change your color here
         ),
       ),
-      body: ListView(children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              widget.catering.gambar,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(widget.catering.name),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Kost Putra"),
-                  Text(widget.catering.harga),
-                ],
+      body: ListView(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                widget.catering.gambar,
+                width: MediaQuery.of(context).size.width,
               ),
-            ),
-            Center(
-              child: Text("Tersisa 2 kamar"),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Fasilitas"),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  widget.catering.name,
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  top: 12.0,
+                ),
+                child: Text(
+                  "Alamat ${widget.catering.alamat}",
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 8.0, right: 8.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.wifi,
-                          size: 50,
-                        ),
-                        Text("Wifi")
-                      ],
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.wifi,
-                          size: 50,
-                        ),
-                        Text("Wifi")
-                      ],
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.wifi,
-                          size: 50,
-                        ),
-                        Text("Wifi")
-                      ],
-                    )
+                    Text("Pemilik : ${widget.catering.pemilik}"),
+                    Text(widget.catering.harga),
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Deskripsi"),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("loremajjhajbajs anjjbd abhje"),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Lokasi"),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-              child: GoogleMap(
-                mapType: MapType.normal,
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(-1.1436951, 116.870669),
-                  zoom: 14.0,
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  top: 8.0,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.star),
+                    Icon(Icons.star),
+                    Icon(Icons.star),
+                    Icon(Icons.star),
+                    Icon(Icons.star_border)
+                  ],
                 ),
               ),
-            )
-          ],
-        ),
-      ]),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 12),
+                child: Text(
+                  "MENU",
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    MenuCard(
+                      Menu(
+                        widget.catering.menu.name,
+                        widget.catering.menu.gambar,
+                        widget.catering.menu.rate,
+                        widget.catering.menu.harga,
+                      ),
+                    ),
+                    MenuCard(
+                      Menu(
+                        widget.catering.menu.name,
+                        widget.catering.menu.gambar,
+                        widget.catering.menu.rate,
+                        widget.catering.menu.harga,
+                      ),
+                    ),
+                    MenuCard(
+                      Menu(
+                        widget.catering.menu.name,
+                        widget.catering.menu.gambar,
+                        widget.catering.menu.rate,
+                        widget.catering.menu.harga,
+                      ),
+                    ),
+                    MenuCard(
+                      Menu(
+                        widget.catering.menu.name,
+                        widget.catering.menu.gambar,
+                        widget.catering.menu.rate,
+                        widget.catering.menu.harga,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

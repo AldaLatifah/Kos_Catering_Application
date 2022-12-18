@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sewa_kost_application/pages/catering_page.dart';
 import 'package:sewa_kost_application/pages/home_page.dart';
+import 'package:sewa_kost_application/pages/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -28,8 +29,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _myPages = [
     HomePage(),
     CateringPage(),
-    HomePage(),
-    HomePage(),
+    ProfilePage(),
   ];
 
   int _pageIndex = 0;
